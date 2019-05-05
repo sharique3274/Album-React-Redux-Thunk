@@ -1,4 +1,4 @@
-import { GET_ALBUMDETAILS, ADD_IMAGE, DELETE_IMAGE } from "./types.js";
+import { GET_ALBUMDETAILS, ADD_IMAGE, DELETE_IMAGE } from "./types";
 import axios from "axios";
 
 export const getAlbumDetails = () => async dispatch => {
