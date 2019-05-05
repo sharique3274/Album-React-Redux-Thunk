@@ -26,7 +26,7 @@ class AlbumCard extends Component {
     const { showContactInfo, heartColor } = this.state;
 
     return (
-      <div className="container" style={{ maxWidth: "40vw" }}>
+      <div className="container text-center" style={{ maxWidth: "40vw" }}>
         <div
           className="card card-body mb-3"
           style={{
@@ -38,7 +38,8 @@ class AlbumCard extends Component {
           <h1
             className="card card-body mb-3"
             style={{
-              backgroundImage: "linear-gradient(-90deg, red, white)",
+              fontWeight: "300",
+              backgroundImage: "linear-gradient(-90deg,  white, grey)",
               border: "1px solid black",
               boxShadow: "9px 3px 9px black"
             }}
@@ -70,7 +71,7 @@ class AlbumCard extends Component {
               style={{ cursor: "pointer", float: "right", color: "red" }}
               //onClick={this.onDeleteClick.bind(this, id)}
             />
-            <Link to={`contact/edit/${id}`}>
+            <Link to={`album/edit/${id}`}>
               <i
                 className="fas fa-pencil-alt"
                 style={{

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import About from "./components/pages/AboutUs";
+import AddImage from "./components/albumDetails/AddImage";
 
 import AlbumLists from "./components/albumDetails/AlbumLists";
 import Header from "./components/layout/Header";
@@ -21,6 +23,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={AlbumLists} />
+                <Route exact path="/album/add" component={AddImage} />
+                <Route exact path="/about" component={About} />
               </Switch>
             </div>
             <Footer />

@@ -78,10 +78,10 @@ class AlbumLists extends Component {
 
     return (
       <div>
-        <h1 className="display-4 mb-2">
+        <h1 className="display-4 mb-2 ">
           <span className="text-danger">Album</span> Photos
         </h1>
-        {currentAlbum.map((albumCard, index) => {
+        {currentAlbum.map(albumCard => {
           return <AlbumCard key={albumCard.id} albumCard={albumCard} />;
         })}
 

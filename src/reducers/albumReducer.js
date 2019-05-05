@@ -1,4 +1,4 @@
-import { GET_ALBUMDETAILS } from "../actions/types";
+import { GET_ALBUMDETAILS, ADD_IMAGE } from "../actions/types";
 
 const initialState = {
   albumDetails: [],
@@ -11,6 +11,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         albumDetails: action.payload
+      };
+
+    case ADD_IMAGE:
+      return {
+        ...state,
+        albumDetails: [action.payload, ...state.albumDetails]
       };
     default:
       return state;
