@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import { connect } from "react-redux";
 import { getAlbumDetails } from "../../actions/AlbumAction";
+import AlbumCard from "./AlbumCard";
 
 let prev = 0;
 let next = 0;
@@ -77,93 +78,100 @@ class AlbumLists extends Component {
 
     return (
       <div>
-        <ul>
-          {currentAlbum.map((todo, index) => {
-            return (
-              <li key={todo.id}>
-                <img src={todo.thumbnailUrl} alt="" />
-              </li>
-            );
-          })}
-        </ul>
-        <ul id="page-numbers">
-          <nav>
-            <Pagination>
-              <PaginationItem>
-                {prev === 0 ? (
-                  <PaginationLink disabled>First</PaginationLink>
-                ) : (
-                  <PaginationLink
-                    onClick={this.handleFirstClick}
-                    id={prev}
-                    href={prev}
-                  >
-                    First
-                  </PaginationLink>
-                )}
-              </PaginationItem>
-              <PaginationItem>
-                {prev === 0 ? (
-                  <PaginationLink disabled>Prev</PaginationLink>
-                ) : (
-                  <PaginationLink
-                    onClick={this.handleClick}
-                    id={prev}
-                    href={prev}
-                  >
-                    Prev
-                  </PaginationLink>
-                )}
-              </PaginationItem>
-              {pageNumbers.map((number, i) => (
-                <Pagination key={i}>
-                  <PaginationItem
-                    active={
-                      pageNumbers[currentPage - 1] === number ? true : false
-                    }
-                  >
+        <h1 className="display-4 mb-2">
+          <span className="text-danger">Album</span> Photos
+        </h1>
+        {currentAlbum.map((albumCard, index) => {
+          return <AlbumCard key={albumCard.id} albumCard={albumCard} />;
+        })}
+
+        <div
+          style={{
+            marginLeft: "30%"
+          }}
+        >
+          <ul id="page-numbers">
+            <nav>
+              <Pagination>
+                <PaginationItem>
+                  {prev === 0 ? (
+                    <PaginationLink disabled>First</PaginationLink>
+                  ) : (
+                    <PaginationLink
+                      onClick={this.handleFirstClick}
+                      id={prev}
+                      href={prev}
+                    >
+                      First
+                    </PaginationLink>
+                  )}
+                </PaginationItem>
+                <PaginationItem>
+                  {prev === 0 ? (
+                    <PaginationLink disabled>Prev</PaginationLink>
+                  ) : (
                     <PaginationLink
                       onClick={this.handleClick}
-                      href={number}
-                      key={number}
-                      id={number}
+                      id={prev}
+                      href={prev}
                     >
-                      {number}
+                      Prev
                     </PaginationLink>
-                  </PaginationItem>
-                </Pagination>
-              ))}
+                  )}
+                </PaginationItem>
+                {pageNumbers.map((number, i) => (
+                  <Pagination key={i}>
+                    <PaginationItem
+                      active={
+                        pageNumbers[currentPage - 1] === number ? true : false
+                      }
+                    >
+                      <PaginationLink
+                        style={{
+                          background: "grey"
+                        }}
+                        onClick={this.handleClick}
+                        href={number}
+                        key={number}
+                        id={number}
+                      >
+                        {number}
+                      </PaginationLink>
+                    </PaginationItem>
+                  </Pagination>
+                ))}
 
-              <PaginationItem>
-                {currentPage === last ? (
-                  <PaginationLink disabled>Next</PaginationLink>
-                ) : (
-                  <PaginationLink
-                    onClick={this.handleClick}
-                    id={pageNumbers[currentPage]}
-                    href={pageNumbers[currentPage]}
-                  >
-                    Next
-                  </PaginationLink>
-                )}
-              </PaginationItem>
+                <PaginationItem>
+                  {currentPage === last ? (
+                    <PaginationLink disabled>Next</PaginationLink>
+                  ) : (
+                    <PaginationLink
+                      onClick={this.handleClick}
+                      id={pageNumbers[currentPage]}
+                      href={pageNumbers[currentPage]}
+                    >
+                      Next
+                    </PaginationLink>
+                  )}
+                </PaginationItem>
 
-              <PaginationItem>
-                {currentPage === last ? (
-                  <PaginationLink disabled>Last</PaginationLink>
-                ) : (
-                  <PaginationLink
-                    onClick={this.handleLastClick}
-                    id={pageNumbers[currentPage]}
-                    href={pageNumbers[currentPage]}
-                  >
-                    Last
-                  </PaginationLink>
-                )}
-              </PaginationItem>
-            </Pagination>
-          </nav>
-        </ul>
+                <PaginationItem>
+                  {currentPage === last ? (
+                    <PaginationLink disabled>Last</PaginationLink>
+                  ) : (
+                    <PaginationLink
+                      onClick={this.handleLastClick}
+                      id={pageNumbers[currentPage]}
+                      href={pageNumbers[currentPage]}
+                    >
+                      Last
+                    </PaginationLink>
+                  )}
+                </PaginationItem>
+              </Pagination>
+            </nav>
+          </ul>
+        </div>
       </div>
     );
   }
