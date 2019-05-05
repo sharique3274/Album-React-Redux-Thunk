@@ -1,4 +1,4 @@
-import { GET_ALBUMDETAILS, ADD_IMAGE } from "./types";
+import { GET_ALBUMDETAILS, ADD_IMAGE, DELETE_IMAGE } from "./types";
 import axios from "axios";
 
 export const getAlbumDetails = () => async dispatch => {
@@ -19,4 +19,19 @@ export const addImage = data => async dispatch => {
     type: ADD_IMAGE,
     payload: res.data
   });
+};
+
+export const deleteImage = id => async dispatch => {
+  try {
+    await axios.delete(`https://jsonplaceholder.typicode.com/photos/${id}`);
+    dispatch({
+      type: DELETE_IMAGE,
+      payload: id
+    });
+  } catch (e) {
+    dispatch({
+      type: DELETE_IMAGE,
+      payload: id
+    });
+  }
 };

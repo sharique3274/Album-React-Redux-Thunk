@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-//import { deleteContact, getFavAlbum } from "../../actions/contactActions";
+import { deleteImage } from "../../actions/AlbumAction";
 
 class AlbumCard extends Component {
   state = {
@@ -19,6 +19,10 @@ class AlbumCard extends Component {
     this.setState({
       heartColor: !this.state.heartColor
     });
+  };
+
+  onDeleteClick = id => {
+    this.props.deleteImage(id);
   };
 
   render() {
@@ -69,7 +73,7 @@ class AlbumCard extends Component {
             <i
               className="fas fa-times"
               style={{ cursor: "pointer", float: "right", color: "red" }}
-              //onClick={this.onDeleteClick.bind(this, id)}
+              onClick={this.onDeleteClick.bind(this, id)}
             />
             <Link to={`album/edit/${id}`}>
               <i
@@ -84,7 +88,7 @@ class AlbumCard extends Component {
             </Link>
             {heartColor ? (
               <i
-                class="far fa-heart"
+                className="far fa-heart"
                 style={{
                   cursor: "pointer",
                   float: "right",
@@ -95,7 +99,7 @@ class AlbumCard extends Component {
               />
             ) : (
               <i
-                class="fas fa-heart"
+                className="fas fa-heart"
                 style={{
                   cursor: "pointer",
                   float: "right",
@@ -119,11 +123,10 @@ class AlbumCard extends Component {
 }
 
 AlbumCard.propTypes = {
-  AlbumCard: PropTypes.object.isRequired,
-  deleteContact: PropTypes.func.isRequired
+  deleteImage: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  {}
+  { deleteImage }
 )(AlbumCard);

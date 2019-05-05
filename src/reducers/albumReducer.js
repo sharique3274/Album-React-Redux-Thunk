@@ -1,4 +1,4 @@
-import { GET_ALBUMDETAILS, ADD_IMAGE } from "../actions/types";
+import { GET_ALBUMDETAILS, ADD_IMAGE, DELETE_IMAGE } from "../actions/types";
 
 const initialState = {
   albumDetails: [],
@@ -17,6 +17,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         albumDetails: [action.payload, ...state.albumDetails]
+      };
+    case DELETE_IMAGE:
+      return {
+        ...state,
+        albumDetails: state.albumDetails.filter(
+          albumDetail => albumDetail.id !== action.payload
+        )
       };
     default:
       return state;
