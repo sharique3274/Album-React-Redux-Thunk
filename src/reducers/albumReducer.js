@@ -10,7 +10,7 @@ export default function(state = initialState, action) {
     case GET_ALBUMDETAILS:
       return {
         ...state,
-        contacts: action.payload
+        albumDetails: action.payload
       };
     default:
       return state;

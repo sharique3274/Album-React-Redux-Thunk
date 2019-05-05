@@ -1,26 +1,22 @@
 import React, { Component } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { connect } from "react-redux";
+import { getAlbumDetails } from "../../actions/AlbumAction";
 
 let prev = 0;
 let next = 0;
 let last = 0;
 let first = 0;
-export default class AlbumLists extends Component {
+class AlbumLists extends Component {
   state = {
     todos: [],
 
     currentPage: 1,
-    todosPerPage: 10
+    albumPhotosPerPage: 10
   };
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/photos?albumId=10")
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          todos: data
-        })
-      );
+    this.props.getAlbumDetails();
   }
 
   handleClick = event => {
@@ -58,14 +54,19 @@ export default class AlbumLists extends Component {
     });
   };
   render() {
-    let { todos, currentPage, todosPerPage } = this.state;
+    console.log(this.props.albumDetails);
+    const { currentPage, albumPhotosPerPage } = this.state;
+    const { albumDetails } = this.props;
 
     // Logic for displaying current todos
-    let indexOfLastTodo = currentPage * todosPerPage;
-    let indexOfFirstTodo = indexOfLastTodo - todosPerPage;
-    let currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
+    const indexOfLastAlbum = currentPage * albumPhotosPerPage;
+    const indexOfFirstAlbum = indexOfLastAlbum - albumPhotosPerPage;
+    const currentAlbum = albumDetails.slice(
+      indexOfFirstAlbum,
+      indexOfLastAlbum
+    );
     prev = currentPage > 0 ? currentPage - 1 : 0;
-    last = Math.ceil(todos.length / todosPerPage);
+    last = Math.ceil(albumDetails.length / albumPhotosPerPage);
     next = last === currentPage ? currentPage : currentPage + 1;
 
     // Logic for displaying page numbers
@@ -77,7 +78,7 @@ export default class AlbumLists extends Component {
     return (
       <div>
         <ul>
-          {currentTodos.map((todo, index) => {
+          {currentAlbum.map((todo, index) => {
             return (
               <li key={todo.id}>
                 <img src={todo.thumbnailUrl} alt="" />
@@ -167,3 +168,13 @@ export default class AlbumLists extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  albumDetails: state.albumReducer.albumDetails
+  //console.log(state);
+});
+
+export default connect(
+  mapStateToProps,
+  { getAlbumDetails }
+)(AlbumLists);
