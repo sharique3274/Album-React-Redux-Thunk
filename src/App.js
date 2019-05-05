@@ -17,7 +17,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Header branding="Sharique'S ALBUM" />
+            <Header heading="Sharique'S ALBUM" />
             <div className="container">
               <Switch>
                 <Route exact path="/" component={AlbumLists} />
