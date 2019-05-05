@@ -1,0 +1,1 @@
+export const GET_ALBUMDETAILS = "GET_ALBUMDETAILS";
