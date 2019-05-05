@@ -87,7 +87,7 @@ class AddImage extends Component {
             />
             <input
               type="submit"
-              value="Add Contact"
+              value="Add Image"
               className="btn btn-light btn-block"
             />
           </form>

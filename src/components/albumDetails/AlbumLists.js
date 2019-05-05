@@ -10,8 +10,6 @@ let last = 0;
 let first = 0;
 class AlbumLists extends Component {
   state = {
-    todos: [],
-
     currentPage: 1,
     albumPhotosPerPage: 10
   };
@@ -179,7 +177,6 @@ class AlbumLists extends Component {
 
 const mapStateToProps = state => ({
   albumDetails: state.albumReducer.albumDetails
-  //console.log(state);
 });
 
 export default connect(

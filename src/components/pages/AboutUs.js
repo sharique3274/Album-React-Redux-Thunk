@@ -12,7 +12,7 @@ export default () => {
         One can add own Image by clicking on "Add" and providing details like
         URL, ID and TITLE.
         <br />
-        Delete the image clicking "Cross". It will call API but cannot
+        One can delete the image clicking "Cross". It will call API but cannot
         parmanently delete and add as its coming from fake API.
         <br />
       </p>

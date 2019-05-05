@@ -35,11 +35,11 @@ const Header = props => {
 };
 
 Header.defaultProps = {
-  branding: "My App"
+  heading: "My App"
 };
 
 Header.propTypes = {
-  branding: PropTypes.string.isRequired
+  heading: PropTypes.string.isRequired
 };
 
 export default Header;
