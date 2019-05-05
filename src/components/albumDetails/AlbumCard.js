@@ -6,7 +6,7 @@ import { deleteImage } from "../../actions/AlbumAction";
 
 class AlbumCard extends Component {
   state = {
-    showContactInfo: false,
+    showInfo: false,
     heartColor: true
   };
 
@@ -27,7 +27,7 @@ class AlbumCard extends Component {
 
   render() {
     const { id, title, albumId, thumbnailUrl } = this.props.albumCard;
-    const { showContactInfo, heartColor } = this.state;
+    const { showInfo, heartColor } = this.state;
 
     return (
       <div className="container text-center" style={{ maxWidth: "40vw" }}>
@@ -64,7 +64,7 @@ class AlbumCard extends Component {
             <i
               onClick={() =>
                 this.setState({
-                  showContactInfo: !this.state.showContactInfo
+                  showInfo: !this.state.showInfo
                 })
               }
               className="fas fa-sort-down"
@@ -110,7 +110,7 @@ class AlbumCard extends Component {
               />
             )}
           </h4>
-          {showContactInfo ? (
+          {showInfo ? (
             <ul className="list-group">
               <li className="list-group-item">ID : {id}</li>
               <li className="list-group-item">TITLE : {title}</li>
