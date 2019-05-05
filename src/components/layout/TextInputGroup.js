@@ -13,11 +13,13 @@ const TextInputGroup = ({
 }) => {
   return (
     <div className="form-group">
-      <label htmlFor={name}>{label}</label>
+      <label className="text-white" htmlFor={name}>
+        {label}
+      </label>
       <input
         type={type}
         name={name}
-        className={classnames("form-control form-control-lg", {
+        className={classnames("form-control form-control", {
           "is-invalid": error
         })}
         placeholder={placeholder}

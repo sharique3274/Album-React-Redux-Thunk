@@ -56,8 +56,18 @@ class AddImage extends Component {
     const { albumId, thumbnailUrl, title, errors } = this.state;
 
     return (
-      <div className="card mb-3" style={{ height: "85vh" }}>
-        <div className="card-header text-center">Add Image To Album</div>
+      <div
+        className="card mb-3"
+        style={{
+          height: "85vh",
+          backgroundImage: "linear-gradient(-90deg, grey, black)",
+          border: "1px solid black",
+          boxShadow: "9px 3px 9px black"
+        }}
+      >
+        <div className="card-header text-center text-white">
+          Add Image To Album
+        </div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <TextInputGroup
@@ -88,7 +98,7 @@ class AddImage extends Component {
             <input
               type="submit"
               value="Add Image"
-              className="btn btn-light btn-block"
+              className="btn btn-dark btn-block"
             />
           </form>
         </div>
