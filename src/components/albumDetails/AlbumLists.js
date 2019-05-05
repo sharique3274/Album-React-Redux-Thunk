@@ -87,7 +87,7 @@ class AlbumLists extends Component {
 
         <div
           style={{
-            marginLeft: "30%"
+            marginLeft: "28%"
           }}
         >
           <ul id="page-numbers">

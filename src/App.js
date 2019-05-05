@@ -12,6 +12,7 @@ import store from "./store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import EditAlbumImage from "./components/albumDetails/EditAlbumImage";
 
 class App extends Component {
   render() {
@@ -25,6 +26,11 @@ class App extends Component {
                 <Route exact path="/" component={AlbumLists} />
                 <Route exact path="/album/add" component={AddImage} />
                 <Route exact path="/about" component={About} />
+                <Route
+                  exact
+                  path="/album/edit/:id"
+                  component={EditAlbumImage}
+                />
                 <Route component={NotFound} />
               </Switch>
             </div>

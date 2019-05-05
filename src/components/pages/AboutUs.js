@@ -5,7 +5,7 @@ export default () => {
     <div className="text-center" style={{ height: "85vh" }}>
       <h1 className="display-4">About Album Details</h1>
       <p className="lead" style={{ color: "white" }}>
-        Its a implementation of React, Redux, Bootstrap, ReactStrap, and Thunk
+        Its an implementation of React, Redux, Bootstrap, ReactStrap, and Thunk
         Middleware. <br />
         One can click on image to see the preview.
         <br />
